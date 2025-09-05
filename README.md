@@ -1,3 +1,4 @@
+![OG IMAGE](./public/og.png)
 # 🎮 Juego del Ahorcado
 
 Un moderno juego del ahorcado desarrollado con **Astro**, **Preact** y **Tailwind CSS**. Diseñado con una interfaz intuitiva, efectos de dibujo a mano y soporte completo para teclado físico.
@@ -14,13 +15,11 @@ Un moderno juego del ahorcado desarrollado con **Astro**, **Preact** y **Tailwin
 
 ## 🚀 Demo en vivo
 
-[Ver juego en vivo](https://hangman.zkjon.dev) *(reemplaza con tu URL)*
+[Ver el juego en vivo](https://hangman.zkjon.dev)
 
-## 📷 Capturas de pantalla
+## 📷 Captura de pantalla
 
-```
-[Aquí puedes agregar capturas de pantalla del juego]
-```
+<img src="./public/screenshot.png" alt="captura de pantalla del juego" />
 
 ## 🛠️ Tecnologías utilizadas
 
@@ -118,7 +117,7 @@ Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) par
 
 ## 👨‍💻 Autor
 
-**Tu Nombre** - [@tu_usuario](https://github.com/tu-usuario)
+**Tu Nombre** - [@zkjon](https://github.com/zkjon)
 
 ## 🙏 Agradecimientos
 
