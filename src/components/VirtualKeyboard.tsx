@@ -30,7 +30,7 @@ export default function VirtualKeyboard({
             onClick={() => onLetterClick(letter)}
             disabled={isDisabled}
             className={`
-              w-10 h-10 text-sm font-bold rounded border-2 transition-colors
+              w-10 h-10 text-lg font-bold rounded border-2 transition-colors
               ${isGuessed 
                 ? 'bg-green-100 border-green-500 text-green-700' 
                 : isWrong 
