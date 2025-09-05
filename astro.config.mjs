@@ -1,20 +1,24 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 
-import path from 'path';
+import preact from "@astrojs/preact";
+import tailwindcss from "@tailwindcss/vite";
 
-import tailwind from '@tailwindcss/vite';
+import path from "node:path";
 
 // https://astro.build/config
 export default defineConfig({
+  integrations: [preact()],
+
   vite: {
-    plugins: [
-      tailwind()
-    ],
+    plugins: [tailwindcss()],
     resolve: {
       alias: {
-        '@': path.resolve('./src'),
+        "@": path.resolve("./src"),
       },
     },
+  },
+  devToolbar: {
+    enabled: false,
   },
 });
