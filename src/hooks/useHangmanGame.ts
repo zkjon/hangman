@@ -37,9 +37,11 @@ export function useHangmanGame() {
 
   // Verificar estado del juego
   useEffect(() => {
+    if (!currentWord) return; // No verificar si no hay palabra aún
+    
     if (wrongGuesses.size >= MAX_ERRORS) {
       setGameStatus('lost');
-    } else if (currentWord?.split('').every(letter => guessedLetters.has(letter))) {
+    } else if (currentWord.split('').every(letter => guessedLetters.has(letter))) {
       setGameStatus('won');
     }
   }, [currentWord, guessedLetters, wrongGuesses]);
