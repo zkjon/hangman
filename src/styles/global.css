@@ -1,0 +1,19 @@
+@import 'tailwindcss';
+
+@theme {
+    --color-bg: #f8f6f2; /* blanco roto */
+    --color-secondary: #2563eb;
+    --color-grid: #93c4fd83; /* azul clarito */
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-neutral-400);
+    background-image:
+        linear-gradient(to right, var(--color-grid) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--color-grid) 1px, transparent 1px);
+    background-size: 32px 32px;
+}
