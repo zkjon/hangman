@@ -18,7 +18,7 @@ export default function VirtualKeyboard({
   if (gameStatus !== 'playing') return null;
 
   return (
-    <div className={`grid grid-cols-6 md:grid-cols-9 gap-2 max-w-lg ${className}`}>
+    <div className={`grid grid-cols-6 md:grid-cols-9 gap-2 max-w-lg  ${className}`}>
       {alphabet.map(letter => {
         const isGuessed = guessedLetters.has(letter);
         const isWrong = wrongGuesses.has(letter);

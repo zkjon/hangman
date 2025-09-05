@@ -1,7 +1,7 @@
 
 const Footer = () => (
     <footer className="w-full text-center py-4 mt-18">
-        &copy; {new Date().getFullYear()} zkjon - Todos los derechos reservados.
+        &copy; {new Date().getFullYear()} zkjon - todos los derechos reservados.
     </footer>
 );
 
