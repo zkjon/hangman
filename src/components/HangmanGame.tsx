@@ -5,6 +5,7 @@ import GameStatus from './GameStatus';
 import ResetButton from './ResetButton';
 import ErrorDisplay from './ErrorDisplay';
 import VirtualKeyboard from './VirtualKeyboard';
+import KeyboardInstructions from './KeyboardInstructions';
 
 interface HangmanGameProps {
   className?: string;
@@ -49,6 +50,8 @@ export default function HangmanGame({ className = '' }: HangmanGameProps) {
           wrongGuesses={wrongGuesses}
           gameStatus={gameStatus}
         />
+
+        <KeyboardInstructions gameStatus={gameStatus} />
       </div>
     </div>
   );
