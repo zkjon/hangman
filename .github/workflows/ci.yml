@@ -31,7 +31,10 @@ jobs:
       
     - name: 🔍 Type check
       run: pnpm astro check
-      
+
+    - name: 🧹 Lint code
+      run: pnpm lint
+
     - name: 🏗️ Build project
       run: pnpm build
       
