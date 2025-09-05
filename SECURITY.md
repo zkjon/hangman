@@ -13,7 +13,7 @@ Si descubres una vulnerabilidad de seguridad en este proyecto, por favor repórt
 ### Cómo Reportar
 
 1. **NO** abras un issue público para vulnerabilidades de seguridad
-2. Envía un email a: [tu-email@ejemplo.com] con los detalles
+2. Envía un email a: [focusyts@gmail.com] con los detalles
 3. Incluye toda la información relevante:
    - Descripción de la vulnerabilidad
    - Pasos para reproducir
