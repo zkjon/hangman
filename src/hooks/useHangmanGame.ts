@@ -24,6 +24,31 @@ export function useHangmanGame() {
     }
   }, [currentWord, guessedLetters, wrongGuesses]);
 
+  // Manejar teclas del teclado físico
+  useEffect(() => {
+    const handleKeyPress = (event: KeyboardEvent) => {
+      const letter = event.key.toUpperCase();
+      
+      // Durante el juego: aceptar letras A-Z y Ñ
+      if (gameStatus === 'playing' && /^[A-ZÑ]$/.test(letter)) {
+        handleLetterGuess(letter);
+      }
+      
+      // Tecla Enter: siempre permite reiniciar/nueva palabra
+      if (event.key === 'Enter') {
+        resetGame();
+      }
+    };
+
+    // Siempre agregar el listener
+    window.addEventListener('keydown', handleKeyPress);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [gameStatus, guessedLetters, wrongGuesses, currentWord]);
+
   const handleLetterGuess = (letter: string) => {
     if (gameStatus !== 'playing' || guessedLetters.has(letter) || wrongGuesses.has(letter)) {
       return;

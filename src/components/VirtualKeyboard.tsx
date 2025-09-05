@@ -13,7 +13,7 @@ export default function VirtualKeyboard({
   gameStatus, 
   className = '' 
 }: VirtualKeyboardProps) {
-  const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+  const alphabet = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'.split('');
 
   if (gameStatus !== 'playing') return null;
 
