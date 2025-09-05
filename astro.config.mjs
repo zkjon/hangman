@@ -11,7 +11,8 @@ export default defineConfig({
   integrations: [preact()],
 
   vite: {
-    plugins: [...tailwindcss()],
+    // @ts-ignore - Tailwind CSS v4 plugin typing issue
+    plugins: [tailwindcss()],
     resolve: {
       alias: {
         "@": path.resolve("./src"),
