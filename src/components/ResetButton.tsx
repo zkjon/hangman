@@ -8,7 +8,7 @@ export default function ResetButton({ onReset, gameStatus, className = '' }: Res
   return (
     <button
       onClick={onReset}
-      className={`px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold ${className}`}
+      className={`px-6 py-3 text-xl bg-text text-white rounded-lg hover:bg-text/80 transition-colors ${className}`}
     >
       {gameStatus === 'playing' ? 'Nueva palabra' : 'Jugar de nuevo'}
     </button>
