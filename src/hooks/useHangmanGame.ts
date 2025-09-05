@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'preact/hooks';
+import { useEffect, useState, useCallback } from 'preact/hooks';
 import { words } from '@/lib/words';
 
 const MAX_ERRORS = 6;
@@ -8,6 +8,26 @@ export function useHangmanGame() {
   const [guessedLetters, setGuessedLetters] = useState<Set<string>>(new Set());
   const [wrongGuesses, setWrongGuesses] = useState<Set<string>>(new Set());
   const [gameStatus, setGameStatus] = useState<'playing' | 'won' | 'lost'>('playing');
+
+  const handleLetterGuess = useCallback((letter: string) => {
+    if (gameStatus !== 'playing' || guessedLetters.has(letter) || wrongGuesses.has(letter)) {
+      return;
+    }
+
+    if (currentWord.includes(letter)) {
+      setGuessedLetters(prev => new Set([...prev, letter]));
+    } else {
+      setWrongGuesses(prev => new Set([...prev, letter]));
+    }
+  }, [gameStatus, guessedLetters, wrongGuesses, currentWord]);
+
+  const resetGame = useCallback(() => {
+    const randomWord = words[Math.floor(Math.random() * words.length)];
+    setCurrentWord(randomWord);
+    setGuessedLetters(new Set());
+    setWrongGuesses(new Set());
+    setGameStatus('playing');
+  }, []);
 
   // Inicializar palabra aleatoria
   useEffect(() => {
@@ -19,7 +39,7 @@ export function useHangmanGame() {
   useEffect(() => {
     if (wrongGuesses.size >= MAX_ERRORS) {
       setGameStatus('lost');
-    } else if (currentWord && currentWord.split('').every(letter => guessedLetters.has(letter))) {
+    } else if (currentWord?.split('').every(letter => guessedLetters.has(letter))) {
       setGameStatus('won');
     }
   }, [currentWord, guessedLetters, wrongGuesses]);
@@ -47,27 +67,7 @@ export function useHangmanGame() {
     return () => {
       window.removeEventListener('keydown', handleKeyPress);
     };
-  }, [gameStatus, guessedLetters, wrongGuesses, currentWord]);
-
-  const handleLetterGuess = (letter: string) => {
-    if (gameStatus !== 'playing' || guessedLetters.has(letter) || wrongGuesses.has(letter)) {
-      return;
-    }
-
-    if (currentWord.includes(letter)) {
-      setGuessedLetters(prev => new Set([...prev, letter]));
-    } else {
-      setWrongGuesses(prev => new Set([...prev, letter]));
-    }
-  };
-
-  const resetGame = () => {
-    const randomWord = words[Math.floor(Math.random() * words.length)];
-    setCurrentWord(randomWord);
-    setGuessedLetters(new Set());
-    setWrongGuesses(new Set());
-    setGameStatus('playing');
-  };
+  }, [gameStatus, handleLetterGuess, resetGame]);
 
   return {
     currentWord,
