@@ -11,7 +11,7 @@ export default defineConfig({
   integrations: [preact()],
 
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [...tailwindcss()],
     resolve: {
       alias: {
         "@": path.resolve("./src"),
