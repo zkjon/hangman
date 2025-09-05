@@ -26,6 +26,7 @@ export default function VirtualKeyboard({
 
         return (
           <button
+            type="button"
             key={letter}
             onClick={() => onLetterClick(letter)}
             disabled={isDisabled}
