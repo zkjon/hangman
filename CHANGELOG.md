@@ -5,7 +5,7 @@ Todos los cambios notables a este proyecto serán documentados en este archivo.
 El formato está basado en [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 y este proyecto adhiere a [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.0] - 2025-09-05
+## [1.0.] - 2025-09-05
 
 ### ✨ Agregado
 - Juego del ahorcado completo y funcional
@@ -35,6 +35,28 @@ y este proyecto adhiere a [Semantic Versioning](https://semver.org/spec/v2.0.0.h
 - Esquema de colores accesible
 - Botones con estados visuales
 - Instrucciones contextúales
+
+## [1.1] - 2025-09-05
+
+### 🐛 Arreglado
+- **Bug crítico de inicialización**: Solucionado problema donde la página mostraba "GANASTE" al cargar inicialmente en lugar de mostrar la palabra para jugar
+- **CI/CD GitHub Actions**: Corregido error "Unable to locate executable file: pnpm" reordenando los pasos de instalación en el workflow
+- **TypeScript en CI**: Solucionado error de tipos en `astro.config.mjs` con el plugin de Tailwind CSS v4
+- **Configuración de lockfile**: Cambiado `--frozen-lockfile` por `--no-frozen-lockfile` para evitar errores en CI cuando el lockfile es incompatible
+
+### 🔧 Mejorado
+- **Calidad de código**: Solucionados todos los problemas detectados por el linter Biome:
+  - Uso de optional chaining (`?.`) en lugar de verificaciones manuales
+  - Agregado `type="button"` explícito a todos los elementos button
+  - Optimizadas dependencias de `useEffect` con `useCallback` para mejor rendimiento
+  - Reordenado el código para evitar referencias antes de declaración
+
+### 🛠️ Técnico
+- Reorganizada la lógica del hook `useHangmanGame` para mejor legibilidad
+- Agregada verificación de palabra vacía antes de evaluar condición de victoria
+- Mejorada la configuración de GitHub Actions para despliegue automático
+- Actualizada configuración de Astro para TypeScript sin errores
+
 
 ## [Unreleased]
 
