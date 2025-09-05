@@ -117,7 +117,7 @@ Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) par
 
 ## 👨‍💻 Autor
 
-**Tu Nombre** - [@zkjon](https://github.com/zkjon)
+**zkjon** - [@zkjon](https://github.com/zkjon)
 
 ## 🙏 Agradecimientos
 
