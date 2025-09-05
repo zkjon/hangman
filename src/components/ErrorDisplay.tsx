@@ -4,7 +4,11 @@ interface ErrorDisplayProps {
   className?: string;
 }
 
-export default function ErrorDisplay({ wrongGuesses, maxErrors, className = '' }: ErrorDisplayProps) {
+export default function ErrorDisplay({
+  wrongGuesses,
+  maxErrors,
+  className = "",
+}: ErrorDisplayProps) {
   return (
     <div className={`space-y-4 ${className}`}>
       {/* Contador de errores */}
@@ -17,7 +21,7 @@ export default function ErrorDisplay({ wrongGuesses, maxErrors, className = '' }
         <div className="text-center">
           <div className="text-sm text-gray-600 mb-2">Letras incorrectas:</div>
           <div className="text-red-600 font-bold text-lg">
-            {Array.from(wrongGuesses).join(', ')}
+            {Array.from(wrongGuesses).join(", ")}
           </div>
         </div>
       )}

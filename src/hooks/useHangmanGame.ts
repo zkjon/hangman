@@ -1,32 +1,41 @@
-import { useEffect, useState, useCallback } from 'preact/hooks';
-import { words } from '@/lib/words';
+import { useEffect, useState, useCallback } from "preact/hooks";
+import { words } from "@/lib/words";
 
 const MAX_ERRORS = 6;
 
 export function useHangmanGame() {
-  const [currentWord, setCurrentWord] = useState('');
+  const [currentWord, setCurrentWord] = useState("");
   const [guessedLetters, setGuessedLetters] = useState<Set<string>>(new Set());
   const [wrongGuesses, setWrongGuesses] = useState<Set<string>>(new Set());
-  const [gameStatus, setGameStatus] = useState<'playing' | 'won' | 'lost'>('playing');
+  const [gameStatus, setGameStatus] = useState<"playing" | "won" | "lost">(
+    "playing",
+  );
 
-  const handleLetterGuess = useCallback((letter: string) => {
-    if (gameStatus !== 'playing' || guessedLetters.has(letter) || wrongGuesses.has(letter)) {
-      return;
-    }
+  const handleLetterGuess = useCallback(
+    (letter: string) => {
+      if (
+        gameStatus !== "playing" ||
+        guessedLetters.has(letter) ||
+        wrongGuesses.has(letter)
+      ) {
+        return;
+      }
 
-    if (currentWord.includes(letter)) {
-      setGuessedLetters(prev => new Set([...prev, letter]));
-    } else {
-      setWrongGuesses(prev => new Set([...prev, letter]));
-    }
-  }, [gameStatus, guessedLetters, wrongGuesses, currentWord]);
+      if (currentWord.includes(letter)) {
+        setGuessedLetters((prev) => new Set([...prev, letter]));
+      } else {
+        setWrongGuesses((prev) => new Set([...prev, letter]));
+      }
+    },
+    [gameStatus, guessedLetters, wrongGuesses, currentWord],
+  );
 
   const resetGame = useCallback(() => {
     const randomWord = words[Math.floor(Math.random() * words.length)];
     setCurrentWord(randomWord);
     setGuessedLetters(new Set());
     setWrongGuesses(new Set());
-    setGameStatus('playing');
+    setGameStatus("playing");
   }, []);
 
   // Inicializar palabra aleatoria
@@ -38,11 +47,13 @@ export function useHangmanGame() {
   // Verificar estado del juego
   useEffect(() => {
     if (!currentWord) return; // No verificar si no hay palabra aún
-    
+
     if (wrongGuesses.size >= MAX_ERRORS) {
-      setGameStatus('lost');
-    } else if (currentWord.split('').every(letter => guessedLetters.has(letter))) {
-      setGameStatus('won');
+      setGameStatus("lost");
+    } else if (
+      currentWord.split("").every((letter) => guessedLetters.has(letter))
+    ) {
+      setGameStatus("won");
     }
   }, [currentWord, guessedLetters, wrongGuesses]);
 
@@ -50,24 +61,24 @@ export function useHangmanGame() {
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
       const letter = event.key.toUpperCase();
-      
+
       // Durante el juego: aceptar letras A-Z y Ñ
-      if (gameStatus === 'playing' && /^[A-ZÑ]$/.test(letter)) {
+      if (gameStatus === "playing" && /^[A-ZÑ]$/.test(letter)) {
         handleLetterGuess(letter);
       }
-      
+
       // Tecla Enter: siempre permite reiniciar/nueva palabra
-      if (event.key === 'Enter') {
+      if (event.key === "Enter") {
         resetGame();
       }
     };
 
     // Siempre agregar el listener
-    window.addEventListener('keydown', handleKeyPress);
+    window.addEventListener("keydown", handleKeyPress);
 
     // Cleanup
     return () => {
-      window.removeEventListener('keydown', handleKeyPress);
+      window.removeEventListener("keydown", handleKeyPress);
     };
   }, [gameStatus, handleLetterGuess, resetGame]);
 
@@ -78,6 +89,6 @@ export function useHangmanGame() {
     gameStatus,
     handleLetterGuess,
     resetGame,
-    maxErrors: MAX_ERRORS
+    maxErrors: MAX_ERRORS,
   };
 }

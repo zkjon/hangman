@@ -5,24 +5,27 @@
   --color-grid: #93c4fd83;
   --color-text: #1a237e;
 
-  --font-primary: 'Mouse Memoirs', sans-serif;
+  --font-primary: "Mouse Memoirs", sans-serif;
 }
 html,
 body {
   @apply m-0 p-0 text-text bg-bg font-primary;
-  background-image: linear-gradient(
-      to right,
-      var(--color-grid) 1px,
-      transparent 1px
-    ),
+  background-image:
+    linear-gradient(to right, var(--color-grid) 1px, transparent 1px),
     linear-gradient(to bottom, var(--color-grid) 1px, transparent 1px);
   background-size: 32px 32px;
 }
 
-*{
+* {
   @apply cursor-crosshair;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   @apply lowercase;
 }
