@@ -20,5 +20,5 @@ body {
 }
 
 *{
-  @apply font-primary lowercase;
+  @apply font-primary lowercase cursor-crosshair;
 }
