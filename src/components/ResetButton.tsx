@@ -7,6 +7,7 @@ interface ResetButtonProps {
 export default function ResetButton({ onReset, gameStatus, className = '' }: ResetButtonProps) {
   return (
     <button
+      type="button"
       onClick={onReset}
       className={`px-6 py-3 text-xl bg-text text-white rounded-lg hover:bg-text/80 transition-colors ${className}`}
     >
