@@ -1,6 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import HangmanGame from "@/components/HangmanGame";
 ---
 
@@ -8,5 +9,6 @@ import HangmanGame from "@/components/HangmanGame";
   <main class="min-h-screen md:max-w-7xl pt-15 mx-auto px-4">
     <Header />
     <HangmanGame className="mt-8" client:load />
+    <Footer />
   </main>
 </Layout>
