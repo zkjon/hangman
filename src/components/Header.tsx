@@ -1,7 +1,7 @@
 const Header = () => (
     <header>
         <h1 className="text-4xl font-medium underline w-fit">
-            el juego del ahorcado
+            El juego del ahorcado
         </h1>
         <p className="mt-4 text-2xl font-ligth max-w-2xl text-justify">
             Bienvenido al juego del ahorcado, donde puedes poner a prueba tus
